@@ -192,8 +192,8 @@
 // Temperature Sensors
 //
 #define TEMP_0_PIN         13   // Analog Input
-#define TEMP_1_PIN         15   // Analog Input
-#define TEMP_BED_PIN       14   // Analog Input
+#define TEMP_1_PIN         14   // Analog Input
+#define TEMP_BED_PIN       12   // Analog Input
 
 // SPI for Max6675 or Max31855 Thermocouple
 #if DISABLED(SDSUPPORT)
@@ -203,75 +203,23 @@
 #endif
 
 //
-// Augmentation for auto-assigning RAMPS plugs
+// Heaters
 //
-#if DISABLED(IS_RAMPS_EEB) && DISABLED(IS_RAMPS_EEF) && DISABLED(IS_RAMPS_EFB) && DISABLED(IS_RAMPS_EFF) && DISABLED(IS_RAMPS_SF) && !PIN_EXISTS(MOSFET_D)
-  #if HOTENDS > 1
-    #if TEMP_SENSOR_BED
-      #define IS_RAMPS_EEB
-    #else
-      #define IS_RAMPS_EEF
-    #endif
-  #elif TEMP_SENSOR_BED
-    #define IS_RAMPS_EFB
-  #else
-    #define IS_RAMPS_EFF
-  #endif
-#endif
+#define HEATER_0_PIN       10
+#define HEATER_1_PIN       9
+#define HEATER_BED_PIN     8
 
 //
-// Heaters / Fans
+//Fans
 //
-#ifndef MOSFET_D_PIN
-  #define MOSFET_D_PIN     -1
-#endif
-#ifndef RAMPS_D8_PIN
-  #define RAMPS_D8_PIN      8
-#endif
-#ifndef RAMPS_D9_PIN
-  #define RAMPS_D9_PIN      9
-#endif
-#ifndef RAMPS_D10_PIN
-  #define RAMPS_D10_PIN    10
-#endif
-
-#define HEATER_0_PIN       RAMPS_D10_PIN
-
-#if ENABLED(IS_RAMPS_EFB)                      // Hotend, Fan, Bed
-  #define HEATER_BED_PIN   RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_EEF)                    // Hotend, Hotend, Fan
-  #define HEATER_1_PIN     RAMPS_D9_PIN
-#elif ENABLED(IS_RAMPS_EEB)                    // Hotend, Hotend, Bed
-  #define HEATER_1_PIN     RAMPS_D9_PIN
-  #define HEATER_BED_PIN   RAMPS_D8_PIN
-#elif ENABLED(IS_RAMPS_EFF)                    // Hotend, Fan, Fan
-  #define FAN1_PIN         RAMPS_D8_PIN
-#elif DISABLED(IS_RAMPS_SF)                    // Not Spindle, Fan (i.e., "EFBF" or "EFBE")
-  #define HEATER_BED_PIN   RAMPS_D8_PIN
-  #if HOTENDS == 1
-    #define FAN1_PIN       MOSFET_D_PIN
-  #else
-    #define HEATER_1_PIN   MOSFET_D_PIN
-  #endif
-#endif
-
-#ifndef FAN_PIN
-  #if ENABLED(IS_RAMPS_EFB) || ENABLED(IS_RAMPS_EFF)  // Hotend, Fan, Bed or Hotend, Fan, Fan
-    #define FAN_PIN        RAMPS_D9_PIN
-  #elif ENABLED(IS_RAMPS_EEF) || ENABLED(IS_RAMPS_SF) // Hotend, Hotend, Fan or Spindle, Fan
-    #define FAN_PIN        RAMPS_D8_PIN
-  #elif ENABLED(IS_RAMPS_EEB)                         // Hotend, Hotend, Bed
-    #define FAN_PIN         4   // IO pin. Buffer needed
-  #else                                               // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
-    #define FAN_PIN        RAMPS_D9_PIN
-  #endif
-#endif
+#define FAN_PIN            4
 
 //
 // Misc. Functions
 //
 #define SDSS               53
-#define LED_PIN            13
+#define LED_PIN            5
+#define BEEPER_PIN        33
 
 #ifndef FILWIDTH_PIN
   #define FILWIDTH_PIN      5   // Analog Input on AUX2
@@ -279,7 +227,7 @@
 
 // define digital pin 4 for the filament runout sensor. Use the RAMPS 1.4 digital input 4 on the servos connector
 #ifndef FIL_RUNOUT_PIN
-  #define FIL_RUNOUT_PIN    4
+  #define FIL_RUNOUT_PIN    44
 #endif
 
 #ifndef PS_ON_PIN
