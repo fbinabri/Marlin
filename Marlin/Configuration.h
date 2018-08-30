@@ -91,10 +91,10 @@
  */
 
 // Enable to show the bitmap in Marlin/_Bootscreen.h on startup.
-//#define SHOW_CUSTOM_BOOTSCREEN
+#define SHOW_CUSTOM_BOOTSCREEN
 
 // Enable to show the bitmap in Marlin/_Statusscreen.h on the status screen.
-//#define CUSTOM_STATUS_SCREEN_IMAGE
+#define CUSTOM_STATUS_SCREEN_IMAGE
 
 // @section machine
 
@@ -361,7 +361,7 @@
 #define PID_MAX BANG_MAX // Limits current to nozzle while PID is active (see PID_FUNCTIONAL_RANGE below); 255=full current
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 #if ENABLED(PIDTEMP)
-  //#define PID_AUTOTUNE_MENU // Add PID Autotune to the LCD "Temperature" menu to run M303 and apply the result.
+  #define PID_AUTOTUNE_MENU // Add PID Autotune to the LCD "Temperature" menu to run M303 and apply the result.
   //#define PID_DEBUG // Sends debug data to the serial port.
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
   //#define SLOW_PWM_HEATERS // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
@@ -406,7 +406,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -920,7 +920,7 @@
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  * By default the firmware assumes HIGH=FILAMENT PRESENT.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
   #define FIL_RUNOUT_INVERTING false // set to true to invert the logic of the sensor.
@@ -1000,7 +1000,7 @@
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  //#define G26_MESH_VALIDATION
+  #define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1419,7 +1419,7 @@
  * you must uncomment the following option or it won't work.
  *
  */
-//#define SDSUPPORT
+#define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -1436,7 +1436,7 @@
  *
  * Use CRC checks and retries on the SD communication.
  */
-//#define SD_CHECK_AND_RETRY
+#define SD_CHECK_AND_RETRY
 
 /**
  * LCD Menu Items
@@ -1662,7 +1662,7 @@
 // Viki 2.0 or mini Viki with Graphic LCD
 // http://panucatt.com
 //
-//#define VIKI2
+#define VIKI2
 //#define miniVIKI
 
 //
